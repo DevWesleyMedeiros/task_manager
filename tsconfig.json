@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+       "target": "esnext",
+       "module": "esnext",
+       "moduleResolution": "node",
+       "outDir": "./dist",
+       "rootDir": "./scripts", 
+       "strict": true,
+       "esModuleInterop": true,
+       "skipLibCheck": true,
+       "forceConsistentCasingInFileNames": true,
+    },
+    "include": [
+      "scripts/**/*.ts"
+    ]
+}
+  

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciador de Tarefas</title>
+  <script type="module" crossorigin src="/index.js"></script>
+  <link rel="stylesheet" crossorigin href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>Gerenciador de Tarefas</h1>
+  </header>
+
+  <main>
+    <!-- Botões na nav bar -->
+    <section class="create_task" aria-labelledby="task-manager">
+      <nav aria-label="Task Actions">
+        <div class="buttons_manager">
+          <button class="task_manager" id="make_task" aria-label="Criar nova tarefa">Criar nova tarefa</button>
+          <button class="task_manager" id="delete_task" aria-label="Excluir tarefa selecionada">Excluir tarefa</button>
+          <button class="task_manager" id="show_registered_tasks" aria-label="Mostrar tarefas cadastradas">Mostrar Tarefas</button>
+        </div>
+        <div class="task_filter">
+          <label for="task_search" class="visually-hidden" style="color: #fff;">Buscar tarefa</label>
+          <input type="search" id="task_search" class="filter" placeholder="Pesquise uma tarefa" aria-label="Buscar tarefa">
+        </div>
+      </nav>
+    </section>
+
+    <!-- Cardas como as tarefas a serem inseridas -->
+    <section class="box_tasks" aria-labelledby="tasks-section">
+      <div class="container_box_tasks">
+        <div class="box_task" role="form" aria-labelledby="task-form">
+          <label for="task_title">Título da tarefa:</label>
+          <input type="text" class="task_title" placeholder="Título da tarefa" required>
+          <label for="task_description">Descrição da tarefa:</label>
+          <textarea class="task_description" placeholder="Descreva aqui sua tarefa"></textarea>
+
+          <fieldset class="task_priority" aria-labelledby="priority-label">
+            <legend id="priority-label">Prioridade</legend>
+            <label for="priority_low">
+              <input type="radio" class="priority" id="priority_low" name="priority" value="Baixa"> Baixa
+            </label>
+            <label for="priority_medium">
+              <input type="radio" class="priority" id="priority_medium" name="priority" value="Média"> Média
+            </label>
+            <label for="priority_high">
+              <input type="radio" class="priority" id="priority_high" name="priority" value="Alta"> Alta
+            </label>
+          </fieldset>
+
+          <div class="task_date">
+            <p>Tarefa inicializada em: <span class="current-date">--</span></p>
+          </div>
+
+          <div class="task_label">
+            <label for="task_label">Categoria:</label>
+            <select id="task_label" name="labels" aria-label="Escolha uma categoria">
+              <option value="Trabalho">Trabalho</option>
+              <option value="Pessoal">Pessoal</option>
+              <option value="Compromissos">Compromissos</option>
+              <option value="Estudos">Estudos</option>
+            </select>
+          </div>
+
+          <div class="handle_task">
+            <button class="handle_task_button" aria-label="Editar Tarefa" name="editar">Editar Tarefa</button>
+            <button class="handle_task_button" aria-label="Finalizar Tarefa" name="finalizar">Finalizar Tarefa</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2024 Gerenciador de Tarefas</p>
+  </footer>
+</body>
+</html>
