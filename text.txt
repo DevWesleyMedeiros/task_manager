@@ -1,0 +1,87 @@
+createTaskBoxElement(): HTMLDivElement {
+
+     // private idPrioritiesNumber : number = 0;
+      // this.containerBoxTasks?.appendChild(this.createTaskBoxElement());
+            const divTaskBox = document.createElement("div")
+
+            const labelForTitleTaskBox = document.createElement("label")
+            labelForTitleTaskBox.innerText = "Título da tarefa";
+
+            const labelForDescriptionTaskBox = document.createElement("label");
+            labelForDescriptionTaskBox.innerText = "Descrição da tarefa";
+
+            const textAreaForTaskBox = document.createElement("textarea");
+            textAreaForTaskBox.setAttribute("class","task_description");
+            textAreaForTaskBox.setAttribute("placeholder", "Descreva aqui sua terefa");
+
+            const fieldsetForTaskBox = document.createElement("fieldset");
+            fieldsetForTaskBox.setAttribute("class", "task_priority");
+            fieldsetForTaskBox.setAttribute("aria-labelledby", "priority-label");
+
+            const legendForTaskBox = document.createElement("legend");
+            legendForTaskBox.setAttribute("class", "priority-label");
+            legendForTaskBox.innerText = "Prioridades";
+
+            const lowlabelForLegend = document.createElement("label");
+            lowlabelForLegend.setAttribute("for", `priority_low${this.numberIdForPriorities()}`);
+
+            const mediumlabelForLegend = document.createElement("label");
+            mediumlabelForLegend.setAttribute("for", `priority_medium${this.numberIdForPriorities()}`);
+
+            const highlabelForLegend = document.createElement("label");
+            highlabelForLegend.setAttribute("for", `priority_high${this.numberIdForPriorities()}`)
+
+            const lowInputRadiosForFieldset = document.createElement("input");
+            lowInputRadiosForFieldset.setAttribute("type", "radio");
+            lowInputRadiosForFieldset.setAttribute("class", "priority");
+            lowInputRadiosForFieldset.setAttribute("id", `priority_low${this.numberIdForPriorities()}`);
+            lowInputRadiosForFieldset.setAttribute("name", "priority");
+            lowInputRadiosForFieldset.setAttribute("value", "Baixa");
+            lowInputRadiosForFieldset.innerText = "Baixa";
+
+            const mediumInputRadiosForFieldset = document.createElement("input");
+            mediumInputRadiosForFieldset.setAttribute("type", "radio");
+            mediumInputRadiosForFieldset.setAttribute("class", "priority");
+            mediumInputRadiosForFieldset.setAttribute("id", `priority_medium${this.numberIdForPriorities()}`);
+            mediumInputRadiosForFieldset.setAttribute("name", "priority");
+            mediumInputRadiosForFieldset.setAttribute("value", "Média");
+            mediumInputRadiosForFieldset.innerText = "Média";
+
+            const highInputRadiosForFieldset = document.createElement("input");
+            highInputRadiosForFieldset.setAttribute("type", "radio");
+            highInputRadiosForFieldset.setAttribute("class", "priority");
+            highInputRadiosForFieldset.setAttribute("id", `priority_high${this.numberIdForPriorities()}`);
+            highInputRadiosForFieldset.setAttribute("name", "priority");
+            highInputRadiosForFieldset.setAttribute("value", "Alta");
+            highInputRadiosForFieldset.innerText = "Alta";
+            
+            const inputForTaskBox = document.createElement("input");
+            inputForTaskBox.setAttribute("type","text");
+            inputForTaskBox.setAttribute("class","task_title");
+            inputForTaskBox.setAttribute("placeholder","Título da tarefa");
+            inputForTaskBox.setAttribute("requerid", "");
+
+            divTaskBox.className = "box_task";
+            divTaskBox.setAttribute("role", "form");
+            divTaskBox.setAttribute("aria-labelledby", "task-form");
+
+            labelForTitleTaskBox.setAttribute("for", "task_title");
+
+            const fieldsetForTaskBoxList = [legendForTaskBox, lowlabelForLegend, lowInputRadiosForFieldset, mediumlabelForLegend, mediumInputRadiosForFieldset, highlabelForLegend, highInputRadiosForFieldset];
+
+            fieldsetForTaskBoxList.forEach((element)=>{
+                fieldsetForTaskBox.appendChild(element);
+            })
+    
+            const divTaskBoxChaildren = [labelForTitleTaskBox, inputForTaskBox, labelForDescriptionTaskBox, textAreaForTaskBox, fieldsetForTaskBox];
+            
+            divTaskBoxChaildren.forEach((element)=>{
+                divTaskBox.appendChild(element);
+            })
+            return divTaskBox;
+        }
+
+   numberIdForPriorities():string{
+            this.idPrioritiesNumber + 1
+            return this.idPrioritiesNumber.toString();
+        }

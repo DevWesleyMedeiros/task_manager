@@ -1,0 +1,29 @@
+{
+  "name": "desafio_solid",
+  "version": "1.0.0",
+  "description": "desafio com Javascritp e typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevWesleyMedeiros/task_manager.git"
+  },
+  "keywords": [
+    "desafio",
+    "Javascritp",
+    "typescript",
+    "frontend",
+    "task",
+    "manager",
+    "html5",
+    "css3"
+  ],
+  "author": "Wesley Medeiros da Rosa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DevWesleyMedeiros/task_manager/issues"
+  },
+  "homepage": "https://github.com/DevWesleyMedeiros/task_manager#readme"
+}
