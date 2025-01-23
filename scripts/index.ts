@@ -4,22 +4,24 @@ namespace TaskManagerButtons {
         private containerBoxTask : HTMLDivElement | null;
     
         constructor() {
-            this.containerBoxTask = document.querySelector(".container_box_tasks") as HTMLDivElement | null;
-            
+            this.containerBoxTask = document.querySelector(".container_box_tasks") as HTMLDivElement | null; // container que armazena as tarefas
         }
         get ContainerBoxTask():HTMLDivElement | null{
             return this.ContainerBoxTask
         }
     
-        static createNewTaskBox(): HTMLDivElement {
+        static createNewTaskBox(): HTMLDivElement { // método que cria os cards de tarefas
             let boxTaskChildren = document.createElement("div");
-            boxTaskChildren.setAttribute("class", "task_box");
+            boxTaskChildren.setAttribute("class", "box_task");
             boxTaskChildren.setAttribute("role", "form");
             boxTaskChildren.setAttribute("aria-labelledby", "task-form");
             
             NewCardTask.applyTaskBoxStyles(boxTaskChildren);
 
             boxTaskChildren.innerHTML = `
+                <div class="close_box_task">
+                    <i class="fa-solid fa-x" style="color: #141414;"></i>
+                </div>
                 <label for="task_title">Título da tarefa:</label>
                 <input type="text" class="task_title" placeholder="Título da tarefa" required>
                 <label for="task_description">Descrição da tarefa:</label>
@@ -59,6 +61,7 @@ namespace TaskManagerButtons {
             `;
             return boxTaskChildren;
         }
+
         static applyTaskBoxStyles(taskBox: HTMLDivElement): void {
             const styles = {
                 border: "1px solid #ccc",
@@ -69,7 +72,7 @@ namespace TaskManagerButtons {
                 boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
                 display: "flex",
                 flexDirection: "column",
-                gap: "0.5rem"
+                gap: "0.5rem",
             };
 
             for (const property in styles) {
@@ -84,46 +87,24 @@ namespace TaskManagerButtons {
     }
 
     export class DeleteNewTask {
-        private deleteTaskButton: HTMLButtonElement | null;
+        private deleteTaskButton: HTMLElement | null;
+        private boxTask:HTMLElement = document.querySelector(".box_task") as HTMLDivElement;
 
         constructor() {
-            this.deleteTaskButton = document.getElementById("delete_task") as HTMLButtonElement | null;
+            this.deleteTaskButton = document.querySelector(".close_box_task") as HTMLDivElement | null;
+
+            this.deleteTaskButton?.addEventListener("click", (evt)=>{
+                DeleteNewTask.deleteBoxTaskChild(this.boxTask);
+            })
         }
 
-        deleteBoxTaskChild(taskBox: HTMLDivElement): void {
+        static deleteBoxTaskChild(taskBox: HTMLElement): void {
             const parentElement = document.querySelector(".container_box_tasks") as HTMLDivElement | null;
             if (parentElement && taskBox) {
                 parentElement.removeChild(taskBox);
             } else {
                 console.error("Não foi possível encontrar o pai ou o filho.");
             }
-        }
-        setupDeleteButtons(): void {
-            const deleteButtons = document.querySelectorAll(".handle_task_button[name='excluir']");
-            deleteButtons.forEach(button => {
-                button.addEventListener("click", (event) => {
-                    const taskBox = (event.target as HTMLElement).closest('.task_box');
-                    if (taskBox) {
-                        this.deleteBoxTaskChild(taskBox);
-                    }
-                });
-            });
-        }
-    }
-
-    export class ShowAllTasks {
-        private showTasksCreatedButton: HTMLButtonElement | null;
-
-        constructor() {
-            this.showTasksCreatedButton = document.getElementById("show_registered_tasks") as HTMLButtonElement | null;
-        }
-    }
-
-    export class FilterTask {
-        private inputSearchTask: HTMLInputElement | null;
-
-        constructor() {
-            this.inputSearchTask = document.getElementById("task_search") as HTMLInputElement | null;
         }
     }
 }
@@ -214,7 +195,6 @@ namespace CreateTaskCard {
                 this.spanFormatCurrentDate.innerHTML = this.currentSystemDate;
             }
         }
-
         get currentSystemDate(): string {
             let ObjDate = new Date();
             const fullDate = [
@@ -277,9 +257,7 @@ function toggleDisabled(state: boolean): void {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    new TaskManagerButtons.DeleteNewTask().deleteBoxTaskChild();
-    new TaskManagerButtons.ShowAllTasks();
-    new TaskManagerButtons.FilterTask();
+    new TaskManagerButtons.DeleteNewTask();
     new CreateTaskCard.TaskTitle();
     new CreateTaskCard.TaskDescription();
     new CreateTaskCard.TaskPriority();

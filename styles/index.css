@@ -105,8 +105,17 @@
     flex-direction: column;
     gap: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
   }
   
+  .box_task .close_box_task{
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    position: absolute;
+    top: 2%;
+    left: 90%;
+  }
   .box_task > label {
     font-size: 1rem;
     font-weight: bold;

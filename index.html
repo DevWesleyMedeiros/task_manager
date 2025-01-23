@@ -17,8 +17,6 @@
       <nav aria-label="Task Actions">
         <div class="buttons_manager">
           <button class="task_manager" id="make_task" aria-label="Criar nova tarefa">Criar nova tarefa</button>
-          <!-- <button class="task_manager" id="delete_task" aria-label="Excluir tarefa selecionada">Excluir tarefa</button> -->
-          <button class="task_manager" id="show_registered_tasks" aria-label="Mostrar tarefas cadastradas">Mostrar Tarefas</button>
         </div>
         <div class="task_filter">
           <label for="task_search" class="visually-hidden" style="color: #fff;">Buscar tarefa</label>
@@ -29,8 +27,12 @@
 
     <!-- Cardas como as tarefas a serem inseridas -->
     <section class="box_tasks" aria-labelledby="tasks-section">
-      <div class="container_box_tasks">
+      <div class="container_box_tasks">  
         <div class="box_task" role="form" aria-labelledby="task-form">
+          <div class="close_box_task">
+            <!-- ícone para fechar a janela -->
+            <i class="fa-solid fa-x" style="color: #141414;"></i>
+          </div>
           <label for="task_title">Título da tarefa:</label>
           <input type="text" class="task_title" placeholder="Título da tarefa" required>
           <label for="task_description">Descrição da tarefa:</label>
